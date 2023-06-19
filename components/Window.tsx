@@ -2,7 +2,7 @@ import React from 'react'
 
 const Window = () => {
   return (
-        <div className='w-full mt-20 h-[300vh] overflow-hidden rounded-2xl border-white bg-[#fffc] border-[3px] shadow-2xl'>
+        <div className='w-full  h-[300vh] overflow-hidden rounded-2xl border-white bg-[#fffc] border-[3px] shadow-2xl'>
           <div className='h-12 flex bg-[#eee] justify-between p-4 items-center w-full'>
               <div className='p-1 rounded-lg bg-white px-8 '>
                 https://www.yourName.30minshop.com/

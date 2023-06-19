@@ -18,6 +18,9 @@
 .bg-primer{
   @apply bg-[#4F46E5]
 }
+.text-primer{
+  @apply text-[#4F46E5]
+}
 *{
   scroll-behavior: smooth;
 }
