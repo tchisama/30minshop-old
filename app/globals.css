@@ -15,7 +15,12 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
+.bg-primer{
+  @apply bg-[#4F46E5]
+}
+*{
+  scroll-behavior: smooth;
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
