@@ -1,11 +1,17 @@
 import React from 'react'
 import StoreGenerator from './StoreGenerator'
+import Hero from '@/StoreSections/Hero'
 
 const Window = () => {
   return (
-        <div className='w-full mx-4 mb-8  h-fit pb-4 overflow-hidden rounded-2xl border-white bg-[#fffc] border-[3px] shadow-2xl'>
+        <div className='w-full mx-4  flex flex-col  h-full  overflow-hidden rounded-2xl border-white bg-[#fffc] border-[3px] shadow-2xl'>
           <NavBar/>
-          <StoreGenerator/>
+          <div className='overflow-y-scroll'>
+            <StoreGenerator/>
+            <Hero/>
+            <Hero/>
+            <Hero/>
+          </div>
         </div>
   )
 }

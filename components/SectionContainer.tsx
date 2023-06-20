@@ -14,7 +14,7 @@ interface INameProps {
 const SectionContainer=({children,k}:INameProps) => {
     const {selectedSection,setSelectedSection,add}=useData()
   return (
-            <div onClick={()=>{if(k!==selectedSection){setSelectedSection(k)}else{setSelectedSection(null)}}} style={{border:k==selectedSection?"2px solid #4F46E5":""}}  className='hover-border-primer cont border-dashed cursor-pointer rounded-md border relative border-transparent'>
+            <div onClick={()=>{if(k!==selectedSection){setSelectedSection(k)}}} style={{border:k==selectedSection?"2px solid #4F46E5":""}}  className='hover-border-primer cont border-dashed cursor-pointer rounded-md border relative border-transparent'>
                 <div className='rounded-md overflow-hidden'>
                     {children}
                 </div>

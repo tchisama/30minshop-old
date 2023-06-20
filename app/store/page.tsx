@@ -16,7 +16,7 @@ const Page = () => {
   return (
       <div className='h-screen relative  flex flex-col'>
             <StoreNavBar/>
-        <div className='flex relative flex-1 overflow-y-scroll  p-2 pt-4'>
+        <div className='flex relative flex-1 h-[calc(100vh-65px)] p-2 pt-4'>
             <StoreLeftMenu/>
             <Window/>
             {

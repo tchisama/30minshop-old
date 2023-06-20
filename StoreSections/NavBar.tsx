@@ -1,14 +1,15 @@
 import React from 'react'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { navbar } from '@/types/types';
+import { navbarProps } from '@/types/types';
 import CropSquareIcon from '@mui/icons-material/CropSquare';
-type navbarProps ={
-  conf:navbar;
+
+type navbarPropss ={
+  conf:navbarProps;
 }
 
-const NavBar = ({conf}:navbarProps) => {
+const NavBar = ({conf}:navbarPropss) => {
   return (
-    <div className='flex justify-between items-center bg-white  text-gray-600 p-4 px-6 w-full'>
+    <div className='flex justify-between items-center bg-white  text-gray-600 p-4 px-10 w-full '>
       <div className='flex container mx-auto justify-between items-center w-full'>
 
       <div className='flex gap-10 items-center'>
@@ -27,9 +28,11 @@ const NavBar = ({conf}:navbarProps) => {
 
       <div className='flex gap-4'>
       {conf.search && <input type="text" placeholder='search' className='border p-2 px-4 rounded-xl outline-none'></input>}
-      <button className='p-2 rounded-xl  border'>
-        <ShoppingBasketIcon/>
-      </button>
+      {conf.viewCart && 
+        <button className='p-2 rounded-xl  border'>
+          <ShoppingBasketIcon/>
+        </button>
+      }
       </div>
 
       </div>

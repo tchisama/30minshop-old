@@ -29,6 +29,14 @@ const Navbar = () => {
             <Switch checked={data[selectedSection||0].props.search} onClick={()=>setData(data.map((s,i)=>i==selectedSection?{...s,props:{...s.props,search:!s.props.search}}:s))}/>
             </div>
         </div>
+        <div className='py-4'>
+            <h4 className='text-xl font-medium py-2'>Cart</h4>
+            
+            <div className='flex justify-between items-center '>
+            <span> Show Cart</span> 
+            <Switch checked={data[selectedSection||0].props.viewCart} onClick={()=>setData(data.map((s,i)=>i==selectedSection?{...s,props:{...s.props,viewCart:!s.props.viewCart}}:s))}/>
+            </div>
+        </div>
     </div>
   )
 }
