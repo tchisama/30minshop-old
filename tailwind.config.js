@@ -5,6 +5,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './StoreSections/**/*.{js,ts,jsx,tsx,mdx}',
+    './EditSection/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {

@@ -6,6 +6,7 @@ export type navbar= {
     }[];
   search:boolean;
   viewLogo:boolean;
+  viewLogoText:boolean;
   viewCart:boolean;
 }
 
