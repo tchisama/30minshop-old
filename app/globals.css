@@ -16,11 +16,22 @@
   }
 }
 .bg-primer{
-  @apply bg-[#4F46E5]
+  @apply bg-[#4F46E5];
 }
 .text-primer{
-  @apply text-[#4F46E5]
+  @apply text-[#4F46E5];
 }
+.border-primer{
+  @apply border-[#4F46E5];
+}
+.hover-border-primer{
+  @apply hover:border-[#4F46E5];
+}
+
+.cont:hover .add-section{
+  @apply scale-100
+}
+
 *{
   scroll-behavior: smooth;
 }
