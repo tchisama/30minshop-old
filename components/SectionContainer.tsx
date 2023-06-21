@@ -5,6 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { section } from '@/types/types';
 import { useData } from '@/store/useData';
+import AddSectionDialog from './AddSectionDialog';
 
 interface INameProps {
     children: ReactNode; 
@@ -14,13 +15,12 @@ interface INameProps {
 const SectionContainer=({children,k}:INameProps) => {
     const {selectedSection,setSelectedSection,add}=useData()
   return (
-            <div onClick={()=>{if(k!==selectedSection){setSelectedSection(k)}}} style={{border:k==selectedSection?"2px solid #4F46E5":""}}  className='hover-border-primer cont border-dashed cursor-pointer rounded-md border relative border-transparent'>
+            <div onClick={()=>{if(k!==selectedSection){setSelectedSection(k)}}} style={{border:k==selectedSection?"2px solid #4F46E533":""}}  className='hover:border-blue-100 cont border-dashed cursor-pointer rounded-md border-[2px] relative border-transparent'>
                 <div className='rounded-md overflow-hidden'>
                     {children}
                 </div>
                 <div className='z-10 bg-white shadow-lg p-1 flex gap-1  rounded-full border scale-0 add-section duration-200 ease-in-out translate-x-[-50%] -bottom-4 left-[50%] absolute '>
-                    <button onClick={()=>add({type:"navbar",props:{links:[{name:"home",link:"home"}],search:true,viewCart:true,viewLogoText:false,viewLogo:false}},k)} className=' px-2 p-1 rounded-full bg-primer text-white text-sm flex items-center gap-1'><AddIcon/> Add Section</button>
-                    <button className='hover:bg-gray-100 p-1 rounded-full bg-white border text-primer text-sm '><EditIcon/></button>
+                    <AddSectionDialog index={k}/>
                     <button className='hover:bg-gray-100 p-1 rounded-full bg-white border text-red-400 text-sm '><DeleteIcon/></button>
                 </div>
             </div>

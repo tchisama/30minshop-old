@@ -5,14 +5,16 @@ import AddIcon from '@mui/icons-material/Add';
 import SectionContainer from './SectionContainer';
 import { section } from '@/types/types';
 import { useData } from '@/store/useData';
+import Hero from '@/StoreSections/Hero';
 
 
-
-const StoreGenerator = () => {
+type props = {
+  editable :boolean;
+}
+const StoreGenerator = ({editable}:props) => {
   const {data,add} = useData()
 
   const addSection:(key:number)=>void=(key)=>{
-      // setData(p=>[...p.slice(0,key+1),{type:"navbar",props:{links:[{name:"home",link:"home"}],search:true,viewCart:true,viewLogo:false}},...p.slice(key+1)])
       add({type:"navbar",props:{links:[{name:"home",link:"home"}],search:true,viewCart:true,viewLogoText:true,viewLogo:false}},key)
   }
   
@@ -27,13 +29,35 @@ const StoreGenerator = () => {
         }
         {
           data.map((section,key)=>{
+
             if(section.type==="navbar"){
-              return(
-                <SectionContainer key={key} k={key} >
-                  <NavBar conf={section.props}/>
-                </SectionContainer>
-              )
+              if (editable) {
+                return(
+                  <SectionContainer key={key} k={key} >
+                    <NavBar conf={section.props}/>
+                  </SectionContainer>
+                )
+              } else {
+                return(
+                    <NavBar conf={section.props}/>
+                )
+              }
             }
+
+            if(section.type==="hero"){
+              if (editable) {
+                return(
+                  <SectionContainer key={key} k={key} >
+                    <Hero conf={section.props}/>
+                  </SectionContainer>
+                )
+              } else {
+                return(
+                    <Hero conf={section.props}/>
+                )
+              }
+            }
+
           })
         }
     </div>

@@ -17,7 +17,7 @@ const Page = () => {
       <div className='h-screen relative  flex flex-col'>
             <StoreNavBar/>
         <div className='flex relative flex-1 h-[calc(100vh-65px)] p-2 pt-4'>
-            <StoreLeftMenu/>
+            {/* <StoreLeftMenu/> */}
             <Window/>
             {
              selectedSection!==null && <EditSection/>

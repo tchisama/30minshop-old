@@ -1,3 +1,4 @@
+import Hero from '@/EditSection/Hero'
 import Navbar from '@/EditSection/Navbar'
 import { useData } from '@/store/useData'
 import React from 'react'
@@ -10,10 +11,12 @@ const EditSection = () => {
       {
         ( selectedSection !== null &&
           data[selectedSection||0]?.type==="navbar"?
-            <Navbar/> : ""
+            <Navbar/> :
+          data[selectedSection||0]?.type==="hero"?
+            <Hero/> :
+            ""
         )
       }
-      <button onClick={()=>setSelectedSection(null)} className='absolute top-2 right-2 p-2 py-1 rounded-fullj bg-red-200 border'>close</button>
     </div>
   )
 }

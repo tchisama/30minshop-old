@@ -1,5 +1,4 @@
 import { section } from "@/types/types"
-import { data } from "autoprefixer"
 import create from "zustand"
 
 interface Data {

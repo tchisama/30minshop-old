@@ -1,3 +1,4 @@
+import Navbar from "@/EditSection/Navbar";
 
 export type navbarProps= {
     links:{
@@ -10,9 +11,16 @@ export type navbarProps= {
     viewCart:boolean;
 }
 
+export const navbarSchema={
+  
+}
+
+
+
+
 export type navbarType={
   type:"navbar";
-  props:navbarProps
+  props:any;
 }
 
 /////////////////////////////////////////////////////////
@@ -30,16 +38,15 @@ export type heroProps= {
 
 export type heroType={
   type:"hero";
-  props:heroProps
+  props:any;
 }
 
 
 
 
 
-export interface section {
-  type:navbarType|heroType
-}
+export type section = navbarType | heroType
+
 
 
 
