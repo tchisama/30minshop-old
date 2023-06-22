@@ -6,7 +6,7 @@ import React from 'react'
 
 const Hero = ({conf}:any) => {
   return (
-    <div className='h-fit lg:h-[650px] bg-[#2e1d46]'>
+    <div className='h-fit lg:h-[650px] bg-primary'>
         <div className='flex-col-reverse lg:flex-row flex container p-10 px-16  h-full items-center mx-auto '>
             <div className='flex flex-col flex-1 lg:max-w-3xl  items-start gap-4 p-8'>
                 {
@@ -17,7 +17,7 @@ const Hero = ({conf}:any) => {
                 }
                 {
                     conf.h3&&
-                    <h3 className='text-lg  text-gray-400 font-medium'>
+                    <h3 className='text-lg  text-gray-300 font-medium'>
                         {conf.h3Text}
                     </h3>
                 }

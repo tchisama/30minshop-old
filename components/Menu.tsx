@@ -11,67 +11,34 @@ import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import { Collapse } from "@mui/material";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Link from "next/link";
 
 
 
 
 
 const MenuArray = [
-  { name: "Dashboard", icon: <DashboardRoundedIcon />, open: false 
-  ,links:[
-    {name:"up Sales"},
-  ]
-  },
-  { name: "Orders", icon: <AutoAwesomeMotionRoundedIcon />, open: false 
-  ,links:[
-    {name:"All orders"},
-    {name:"New order"},
-  ]
-  },
-  { name: "Products", icon: <LocalOfferRoundedIcon />, open: false 
-  ,links:[
-    {name:"All Products"},
-    {name:"New Product"},
-    {name:"Categories"},
-  ]
-  },
-  { name: "Store", icon: <StorefrontRoundedIcon />, open: false },
-  { name: "Sittings", icon: <SettingsRoundedIcon />, open: false },
+  { name: "Dashboard", icon: <DashboardRoundedIcon />, open: false,link:"/" },
+  { name: "Orders", icon: <AutoAwesomeMotionRoundedIcon />, open: false,link:"/orders" },
+  { name: "Products", icon: <LocalOfferRoundedIcon />, open: false,link:"/products" },
+  { name: "Store", icon: <StorefrontRoundedIcon />, open: false ,link:"/store"},
+  { name: "Settings", icon: <SettingsRoundedIcon />, open: false,link:"/settings" },
 ];
 
 export const Menu = () => {
-  const [menu, setMenu] = useState(MenuArray);
+  const [menu, setMenu] = useState(false);
   return (
-    <div className="py-8 px-1 flex flex-col gap-16 w-fit bg-[#fff8] sticky shadow-lg top-0 h-screen ">
-      <Image className="mx-4 w-10 h-10" src={logo} alt="30 min shop logo" />
-      <div className="py-4 flex flex-col  rounded-lg  min-w-[200px] ">
-        {menu.map((li, key) => (
-          <div className="px-4  rounded-md" style={{background:li.open?"#0001":"#fff0"}}>
-            <div
-              key={key}
-              onClick={() =>
-                setMenu((p) =>
-                  p.map((l) => (l == li ? { ...l, open: !l.open } : {...l,open:false}))
-                )
-              }
-              className="flex items-center gap-2 py-3 text-gray-500 font-medium hover:text-gray-700 cursor-pointer  duration-300 ease-in-out"
-            >
-              {li.icon}
-              <div className="flex-1">{li.name}</div>
-              {li.open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </div>
-            <Collapse in={li.open}>
-              <ul className="pl-8">
-                {
-                    li?.links?.map(link=>(
-                        <li className="py-2 text-gray-500 hover:text-gray-700 cursor-pointer">{link.name}</li>
-                    ))
-                }
-              </ul>
-            </Collapse>
-          </div>
-        ))}
-      </div>
+    <div className="py-4 m-2 rounded-xl shadow-xl px-1 flex flex-col gap-16 w-fit bg-primary text-white sticky top-8 h-full  ">
+      <Image className="mx-4 w-12 h-12 bg-white p-2 mask mask-squircle" src={logo} alt="30 min shop logo"  onClick={()=>setMenu(p=>!p)}/>
+      <ul className="menu font-medium text-md rounded-box gap-0 ">
+        {
+            MenuArray.map(link=><li><Link className="hover:text-white py-4  w-full pr-2 pl-5" href={link.link}>{link.icon}{
+              <Collapse orientation="horizontal" in={menu} >
+                {link.name}
+              </Collapse>
+            }</Link></li>)
+          }
+      </ul>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import Hero from '@/StoreSections/Hero'
 
 const Window = () => {
   return (
-        <div className='w-full mx-4  flex flex-col  h-full  overflow-hidden rounded-2xl border-white bg-[#fffc] border-[3px] shadow-2xl'>
+        <div className='w-full mx-auto max-w-[2000px]  flex flex-col  h-full  overflow-hidden rounded-2xl border-white bg-[#fffc] border-[3px] shadow-2xl'>
           <NavBar/>
           <div className='overflow-y-scroll h-full'>
             <StoreGenerator editable={true}/>

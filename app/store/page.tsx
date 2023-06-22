@@ -14,9 +14,9 @@ import { useData } from '@/store/useData';
 const Page = () => {
   const {selectedSection}=useData()
   return (
-      <div className='h-screen relative  flex flex-col'>
+      <div className='h-screen flex-1 relative  flex flex-col'>
             <StoreNavBar/>
-        <div className='flex relative flex-1 h-[calc(100vh-65px)] p-2 pt-4'>
+        <div className='flex relative gap-4 flex-1 h-[calc(100vh-65px)] p-2 pt-4'>
             {/* <StoreLeftMenu/> */}
             <Window/>
             {
