@@ -6,6 +6,9 @@ import SectionContainer from './SectionContainer';
 import { section } from '@/types/types';
 import { useData } from '@/store/useData';
 import Hero from '@/StoreSections/Hero';
+import AddSectionDialog from './AddSectionDialog';
+import ProductsViewer from '@/StoreSections/ProductsViewer';
+import Footer from '@/StoreSections/Footer';
 
 
 type props = {
@@ -24,7 +27,7 @@ const StoreGenerator = ({editable}:props) => {
         {
           data?.length===0&&
           <div className='p-8 flex items-center justify-center w-full'>
-            <button onClick={()=>addSection(0)} className='  px-4 p-2 rounded-full bg-primer text-white text-md flex items-center gap-1'><AddIcon/> Add Section</button>
+            <AddSectionDialog index={0}/>
           </div>
         }
         {
@@ -54,6 +57,33 @@ const StoreGenerator = ({editable}:props) => {
               } else {
                 return(
                     <Hero conf={section.props}/>
+                )
+              }
+            }
+
+            if(section.type==="productsViewer"){
+              if (editable) {
+                return(
+                  <SectionContainer key={key} k={key} >
+                    <ProductsViewer conf={section.props}/>
+                  </SectionContainer>
+                )
+              } else {
+                return(
+                    <ProductsViewer conf={section.props}/>
+                )
+              }
+            }
+            if(section.type==="footer"){
+              if (editable) {
+                return(
+                  <SectionContainer key={key} k={key} >
+                    <Footer conf={section.props}/>
+                  </SectionContainer>
+                )
+              } else {
+                return(
+                    <Footer conf={section.props}/>
                 )
               }
             }

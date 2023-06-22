@@ -1,8 +1,6 @@
 import React from 'react'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import { navbarProps } from '@/types/types';
-import CropSquareIcon from '@mui/icons-material/CropSquare';
 
 
 const NavBar = ({conf}:any) => {
