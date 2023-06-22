@@ -10,8 +10,8 @@ type props ={
 
 const Hero = ({conf}:props) => {
   return (
-    <div className='h-[600px] bg-gray-50'>
-        <div className='flex container p-10  h-full items-center mx-auto '>
+    <div className='h-fit lg:h-[600px] bg-gray-50'>
+        <div className='flex-col-reverse lg:flex-row flex container p-10   h-full items-center mx-auto '>
             <div className='flex flex-col flex-1 items-start gap-4'>
                 {
                     conf.h1&&

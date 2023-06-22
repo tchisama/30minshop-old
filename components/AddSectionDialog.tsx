@@ -56,7 +56,8 @@ export default function AddSectionDialog({index}:props) {
             search:true,
             viewCart:true,
             viewLogoText:true,
-            viewLogo:false,
+            viewLogo:true,
+            viewLinks:true,
             logoSize:20
           }}
           ,index)
