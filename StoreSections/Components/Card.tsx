@@ -17,7 +17,7 @@ const Card = ({img}:props) => {
                 <p className="text-lg font-semibold">Shoes!</p>
                 <p className="card-title">35$</p>
               </div>
-              <p className='text-gray-600 text-sm'>Lorem ipsum dolor sit amet conse ctetur ... </p>
+              <p className='text-gray-600 text-sm'>Lorem ipsum dolor sit amet9conse ctetur ... </p>
               <div className='pt-2'>
                 <button className="btn btn-sm float-right hover:btn-primary">Add to cart </button>
               </div>

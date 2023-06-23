@@ -5,7 +5,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
 const NavBar = ({conf}:any) => {
   return (
-    <div className='flex justify-between items-center bg-white  text-gray-600 p-2 px-10 w-full '>
+    <div style={{backgroundColor:conf?.backgroundColor,color:conf?.textColor}} className='flex justify-between items-center   py-6  p-2 px-10 w-full '>
       <div className='flex container gap-2 mx-auto justify-between items-center w-full'>
 
       <div className='flex  gap-10 items-center'>
@@ -17,9 +17,9 @@ const NavBar = ({conf}:any) => {
       <div className='flex-1 flex px-4' style={{justifyContent:conf?.linksAlign||"start"}}>
         {
           conf?.viewLinks &&
-        <ul className='flex menu menu-horizontal'>
+        <ul className='flex  '>
           {
-            conf.links.map((link:any)=><li><a>{link.name}</a></li>)
+            conf.links.map((link:any)=><li className='px-4 py-2  rounded-lg font-medium cursor-pointer hover:bg-[#0001]'><a>{link.name}</a></li>)
           }
         </ul>
         }

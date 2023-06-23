@@ -228,6 +228,72 @@ const Hero = () => {
                 }
                 </SectionTopic>
 
+
+
+
+                <SectionTopic title="General">
+                <div className="form-control">
+                    <label className="label flex flex-col items-start gap-1 cursor-pointer">
+                    <span className="label-text">height</span>
+                    <input
+
+                    value={data[selectedSection || 0].props?.height || ""}
+                    onInput={(e) =>
+                      setData(
+                        data.map((s, i) =>
+                          i == selectedSection
+                            ? {
+                                ...s,
+                                props: {
+                                  ...s.props,
+                                  height: (e.target as any).value,
+                                },
+                              }
+                            : s
+                        )
+                      )
+                    }
+                       type="range"
+                       min="10"
+                       max="100"
+                        className="range range-sm range-primary"
+                    />
+                    </label>
+
+
+            <label className="label flex justify-between cursor-pointer">
+              <span className="label-text">Background color</span>
+              <input
+                  value={data[selectedSection || 0].props?.backgroundColor || ""}
+                    onInput={(e) =>
+                      setData(
+                        data.map((s, i) =>
+                          i == selectedSection
+                            ? {
+                                ...s,
+                                props: {
+                                  ...s.props,
+                                  backgroundColor: (e.target as any).value,
+                                },
+                              }
+                            : s
+                        )
+                      )
+                    }
+                type="color"
+                className="input my-1 input-bordered input-sm px-0 max-w-xs"
+              />
+            </label>
+
+
+
+                </div>
+                </SectionTopic>
+
+
+
+
+
         </div>
 
     </div>

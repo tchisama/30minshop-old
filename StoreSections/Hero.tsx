@@ -6,7 +6,7 @@ import React from 'react'
 
 const Hero = ({conf}:any) => {
   return (
-    <div className='h-fit lg:h-[650px] bg-primary'>
+    <div style={{height:conf?.height+"vh",backgroundColor:conf?.backgroundColor}} className='h-fit bg-primary'>
         <div className='flex-col-reverse lg:flex-row flex container p-10 px-16  h-full items-center mx-auto '>
             <div className='flex flex-col flex-1 lg:max-w-3xl  items-start gap-4 p-8'>
                 {
@@ -28,7 +28,7 @@ const Hero = ({conf}:any) => {
             </div>
             {
                 conf.image&&
-                <div className='flex-1 h-full p-8 '>
+                <div className='flex-1 h-full p-1 '>
                     <img src={conf.imageUrl} className='w-full h-full object-contain  rounded-xl  flex items-center justify-center '/>
                 </div>
             }

@@ -20,6 +20,105 @@ const Navbar = () => {
       <Divider />
 
       <div className="py-4 flex flex-col gap-2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <SectionTopic title="general">
+
+          <div className="form-control gap-0">
+
+
+
+
+            <label className="label flex justify-between cursor-pointer">
+              <span className="label-text">Background color</span>
+              <input
+                  value={data[selectedSection || 0].props?.backgroundColor || ""}
+                    onInput={(e) =>
+                      setData(
+                        data.map((s, i) =>
+                          i == selectedSection
+                            ? {
+                                ...s,
+                                props: {
+                                  ...s.props,
+                                  backgroundColor: (e.target as any).value,
+                                },
+                              }
+                            : s
+                        )
+                      )
+                    }
+                type="color"
+                className="input my-1 input-bordered input-sm px-0 max-w-xs"
+              />
+            </label>
+
+
+
+            <label className="label flex justify-between cursor-pointer">
+              <span className="label-text">Text color</span>
+              <input
+                  value={data[selectedSection || 0].props?.textColor || ""}
+                    onInput={(e) =>
+                      setData(
+                        data.map((s, i) =>
+                          i == selectedSection
+                            ? {
+                                ...s,
+                                props: {
+                                  ...s.props,
+                                  textColor: (e.target as any).value,
+                                },
+                              }
+                            : s
+                        )
+                      )
+                    }
+                type="color"
+                className="input my-1 input-bordered input-sm px-0 max-w-xs"
+              />
+            </label>
+
+          </div>
+        </SectionTopic>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <details className="collapse  collapse-arrow bg-base-100 border">
           <summary className="collapse-title text-lg font-medium">Logo</summary>
           <div className="collapse-content">
