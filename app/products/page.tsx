@@ -4,6 +4,7 @@ import { Menu } from "@/components/Menu";
 import {useEffect, useState} from "react"
 import { getDocs} from "firebase/firestore"
 import {productsRef} from "@/firebase"
+import NewProduct from "@/components/NewProduct";
 
 export default function Orders() {
   const [products,setProducts]=useState([])
@@ -23,7 +24,11 @@ export default function Orders() {
     <div className="min-h-screen w-full flex relative">
       <Menu />
       <div className="flex-1 p-6">
-      <h1 className="py-8 text-5xl text-primary font-semibold uppercase">Products</h1>
+      <div className="flex w-full justify-between items-center">
+        <h1 className="py-8 text-5xl text-primary font-semibold uppercase">Products</h1>
+        <NewProduct/>
+
+      </div>
       <div className="overflow-x-auto flex-1 bg-white rounded-2xl shadow-lg p-4">
         <table className="table">
           {/* head */}
@@ -42,9 +47,9 @@ export default function Orders() {
                 <tr key={(product as any).id}>
                   <td><img className="w-24 h-20 object-contain" src={(product as any).image}></img></td>
                   <td>{(product as any).title}</td>
-                  <td>{(product as any).price}</td>
-                  <td>{(product as any).description.slice(0,30)}</td>
-                  <td><input type="checkbox" className="checkbox checkbox-primary" checked={(product as any).available}></input></td>
+                  <td>{(product as any).price} Dh</td>
+                  <td>{(product as any).description}</td>
+                  <td>{(product as any).avalibale?"true":"false"}</td>
                 </tr>
               ))
             }

@@ -14,12 +14,23 @@ import { usePages } from '@/store/usePages';
 
 type props = {
   editable :boolean;
+  page?:undefined|string
 }
-const StoreGenerator = ({editable}:props) => {
+const StoreGeneratorLive = ({editable,page}:props) => {
   const {data,setData,add} = useData()
   const {currentPage,setCurrentPage,pages} = usePages()
 
   
+  useEffect(()=>{
+    if(page!=undefined){
+      pages.forEach((p:any,i) => {
+        if(p.url==page){
+          setData(p.data)
+          setCurrentPage(i)
+        }
+      });
+    }
+  },[])
 
   return (
     <div>
@@ -93,4 +104,4 @@ const StoreGenerator = ({editable}:props) => {
   )
 }
 
-export default StoreGenerator
+export default StoreGeneratorLive

@@ -1,9 +1,12 @@
 import React from 'react'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import Link from 'next/link';
+import { usePages } from '@/store/usePages';
 
 
 const NavBar = ({conf}:any) => {
+  const {pages}=usePages()
   return (
     <div style={{backgroundColor:conf?.backgroundColor,color:conf?.textColor}} className='flex justify-between items-center   py-6  p-2 px-10 w-full '>
       <div className='flex container gap-2 mx-auto justify-between items-center w-full'>
@@ -19,7 +22,14 @@ const NavBar = ({conf}:any) => {
           conf?.viewLinks &&
         <ul className='flex  '>
           {
-            conf.links.map((link:any)=><li className='px-4 py-2  rounded-lg font-medium cursor-pointer hover:bg-[#0001]'><a>{link.name}</a></li>)
+            pages.map((page:any)=>(
+              <li >
+                <Link href={"/live/mystore/"+page.url} className='px-4 py-2  rounded-lg font-medium cursor-pointer hover:bg-[#0001]'>
+                  {page.name}
+                </Link>
+              </li>
+              )
+              )
           }
         </ul>
         }
