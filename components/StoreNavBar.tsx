@@ -5,12 +5,17 @@ import Image from "next/image";
 import logo from "@/public/Logo.png";
 import Link from "next/link";
 import { useData } from "@/store/useData";
-import { usePages } from "@/store/usePages";
-import {useEffect} from "react"
+import { page, usePages } from "@/store/usePages";
+import {useEffect,useState} from "react"
 import NewPage from "./AddNewPage";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "@/firebase";
+import { useUser } from "@/store/useUser";
 const StoreNavBar = () => {
   const {data,setData}=useData()
   const {currentPage,pages,setPages,setCurrentPage}=usePages()
+  const {store}=useUser()
+  const [publishing,setPublishing]=useState(false)
   useEffect(() => {
       setData(pages[currentPage].data)
   }, [currentPage])
@@ -27,6 +32,21 @@ const StoreNavBar = () => {
       }
     }))
   }, [data])
+
+
+  const save = ()=>{
+    setPublishing(true)
+    pages.forEach((page) => {
+      const pageRef = doc(db,"pages",page.id)
+      updateDoc(pageRef,{
+        data:JSON.stringify(page.data)
+      }).then(()=>{
+        setTimeout(()=>{
+          setPublishing(false)
+        },1000)
+      })
+    });
+  }
   
   return (
     <div className=" shadow-lg top-0 w-full left-0">
@@ -43,10 +63,12 @@ const StoreNavBar = () => {
           </select>
           <NewPage/>
           </div>
-          <button className="btn  btn-sm">save</button>
+          <button onClick={save} className="btn  btn-sm">publish
+          { publishing && <span className="loading loading-spinner loading-xs"></span>}
+          </button>
           {
             data.length>0&&
-            <Link href={"live/mystore"} className="btn btn-sm btn-primary">
+            <Link href={"live/"+store+"/"+pages[currentPage].url} className="btn btn-sm btn-primary">
               Live
             </Link>
           }

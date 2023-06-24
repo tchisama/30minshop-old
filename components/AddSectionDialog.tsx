@@ -43,10 +43,7 @@ export default function AddSectionDialog({ index }: props) {
           type: "navbar",
           props: {
             links: [
-              { name: "home", link: "home" },
-              { name: "about", link: "home" },
-              { name: "market", link: "home" },
-              { name: "contact", link: "home" },
+              { name: "home", link: "",show:true },
             ],
             search: true,
             viewCart: true,

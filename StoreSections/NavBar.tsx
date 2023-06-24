@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { usePages } from '@/store/usePages';
 
 
-const NavBar = ({conf}:any) => {
-  const {pages}=usePages()
+const NavBar = ({conf,storeName}:any) => {
+  const {pages,currentPage}=usePages()
+
   return (
     <div style={{backgroundColor:conf?.backgroundColor,color:conf?.textColor}} className='flex justify-between items-center   py-6  p-2 px-10 w-full '>
       <div className='flex container gap-2 mx-auto justify-between items-center w-full'>
@@ -22,10 +23,11 @@ const NavBar = ({conf}:any) => {
           conf?.viewLinks &&
         <ul className='flex  '>
           {
-            pages.map((page:any)=>(
+          pages[currentPage].links.map((link:any)=>(
+              link.show&&
               <li >
-                <Link href={"/live/mystore/"+page.url} className='px-4 py-2  rounded-lg font-medium cursor-pointer hover:bg-[#0001]'>
-                  {page.name}
+                <Link href={"/live/"+storeName+"/"+link.url} className='px-4 py-2  rounded-lg font-medium cursor-pointer hover:bg-[#0001]'>
+                  {link.name}
                 </Link>
               </li>
               )

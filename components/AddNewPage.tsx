@@ -1,21 +1,31 @@
+import { db, pagesRef } from '@/firebase';
 import { usePages } from '@/store/usePages';
+import { useUser } from '@/store/useUser';
+import { addDoc, doc, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 
 const NewPage = () => {
     const [page,setPage]=useState("");
     const [url,setUrl]=useState("");
     const {setPages,pages,setCurrentPage}=usePages()
+    const {store}=useUser()
 
     const addPage=()=>{
-        setPages([...pages,
-        {
-            name:page,
-            url,
-            data:[]
-        }
-        ])
-        setCurrentPage(pages.length)
-    }
+        addDoc(pagesRef,{
+          name:page,
+          url,
+          data:"[]",
+          store,
+          links:[...pages[0].links,{name:page,url,show:true}]
+        }).then(()=>{
+          pages.forEach((p)=>{
+            const pRef = doc(db,"pages",p.id)
+            updateDoc(pRef,{
+              links:[...p.links,{name:page,url,show:true}]
+            })
+          })
+        })
+      }
 
     useEffect(() => {
         setUrl(page)

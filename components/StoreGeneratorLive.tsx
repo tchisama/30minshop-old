@@ -10,92 +10,82 @@ import AddSectionDialog from './AddSectionDialog';
 import ProductsViewer from '@/StoreSections/ProductsViewer';
 import Footer from '@/StoreSections/Footer';
 import { usePages } from '@/store/usePages';
+import { pagesRef } from '@/firebase';
+import { and, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 
 
 type props = {
   editable :boolean;
   page?:undefined|string
+  storeName?:undefined|string
 }
-const StoreGeneratorLive = ({editable,page}:props) => {
+const StoreGeneratorLive = ({editable,page,storeName}:props) => {
   const {data,setData,add} = useData()
-  const {currentPage,setCurrentPage,pages} = usePages()
+  const {currentPage,setPages,setCurrentPage} = usePages()
+  const [err,setErr]=useState(false)
 
   
   useEffect(()=>{
+    setData([])
     if(page!=undefined){
-      pages.forEach((p:any,i) => {
-        if(p.url==page){
-          setData(p.data)
-          setCurrentPage(i)
+      // pages.forEach((p:any,i) => {
+      //   if(p.url==page){
+      //     setData(p.data)
+      //     setCurrentPage(i)
+      //     console.log(p.data)
+      //   }
+      // });
+
+      const q = query(pagesRef,and(where("url","==",page),where("store","==",storeName)))
+      onSnapshot(q,(snapshot)=>{
+        let pags =[]
+        snapshot.docs.forEach((doc)=>{
+          pags.push({...doc.data(),id:doc.id,data:JSON.parse((doc.data().data))})
+        })
+        if(pags.length>0){
+          setPages(pags)
+          setData(pags[0].data)
+          console.log(pags)
+          setCurrentPage(0)
+        }else{
+          setErr(true)
         }
-      });
+      })
     }
   },[])
 
+
+
+
   return (
+    err?
+    <div>page not found bitch</div>
+    :
     <div className='bg-white'>
-        {
-          data?.length===0&&
-          <div className='p-8 flex items-center justify-center w-full'>
-            <AddSectionDialog index={0}/>
-          </div>
-        }
         {
           data.map((section,key)=>{
 
             if(section.type==="navbar"){
-              if (editable) {
                 return(
-                  <SectionContainer key={key} k={key} >
-                    <NavBar conf={section.props}/>
-                  </SectionContainer>
+                    <NavBar storeName={storeName} key={key} conf={section.props}/>
                 )
-              } else {
-                return(
-                    <NavBar conf={section.props}/>
-                )
-              }
             }
 
             if(section.type==="hero"){
-              if (editable) {
                 return(
-                  <SectionContainer key={key} k={key} >
-                    <Hero conf={section.props}/>
-                  </SectionContainer>
+                    <Hero key={key} conf={section.props}/>
                 )
-              } else {
-                return(
-                    <Hero conf={section.props}/>
-                )
-              }
             }
 
             if(section.type==="productsViewer"){
-              if (editable) {
                 return(
-                  <SectionContainer key={key} k={key} >
-                    <ProductsViewer conf={section.props}/>
-                  </SectionContainer>
+                    <ProductsViewer key={key} conf={section.props}/>
                 )
-              } else {
-                return(
-                    <ProductsViewer conf={section.props}/>
-                )
-              }
             }
             if(section.type==="footer"){
-              if (editable) {
                 return(
-                  <SectionContainer key={key} k={key} >
-                    <Footer conf={section.props}/>
-                  </SectionContainer>
+                    <Footer key={key} conf={section.props}/>
                 )
-              } else {
-                return(
-                    <Footer conf={section.props}/>
-                )
-              }
             }
 
           })

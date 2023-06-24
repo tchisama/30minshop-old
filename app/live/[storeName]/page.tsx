@@ -3,6 +3,6 @@ import StoreGeneratorLive from "@/components/StoreGeneratorLive";
 
 export default function Page({ params }: { params: any }) {
     return (
-        <StoreGeneratorLive page={""} editable={false}/>
+        <StoreGeneratorLive  storeName={params.storeName}  page={""} editable={false}/>
     )
 }
