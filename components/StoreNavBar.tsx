@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useData } from "@/store/useData";
 import { usePages } from "@/store/usePages";
 import {useEffect} from "react"
+import NewPage from "./AddNewPage";
 const StoreNavBar = () => {
   const {data,setData}=useData()
   const {currentPage,pages,setPages,setCurrentPage}=usePages()
@@ -40,7 +41,7 @@ const StoreNavBar = () => {
               pages.map((page,i)=><option value={i} key={page.url}>{page.name}</option>)
             }
           </select>
-          <button className="btn join-item btn-sm hover:btn-primary">new</button>
+          <NewPage/>
           </div>
           <button className="btn  btn-sm">save</button>
           {

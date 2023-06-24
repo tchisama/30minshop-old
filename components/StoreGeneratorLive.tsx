@@ -33,7 +33,7 @@ const StoreGeneratorLive = ({editable,page}:props) => {
   },[])
 
   return (
-    <div>
+    <div className='bg-white'>
         {
           data?.length===0&&
           <div className='p-8 flex items-center justify-center w-full'>
