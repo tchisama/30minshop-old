@@ -27,7 +27,7 @@ const Page = () => {
     onSnapshot(q,(snapshot)=>{
       let pgs:any=[];
       snapshot.docs.forEach(doc => {
-        pgs.push({...doc.data(),id:doc.id,data:JSON.parse(doc.data().data)})
+        pgs.push({...doc.data(),id:doc.id})
       });
       setPages(pgs);
       console.log(pgs);

@@ -7,6 +7,9 @@ module.exports = {
     './StoreSections/**/*.{js,ts,jsx,tsx,mdx}',
     './EditSection/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  daisyui: {
+    themes: ["light"],
+  },
   theme: {
     extend: {
       backgroundImage: {

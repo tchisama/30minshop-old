@@ -39,7 +39,7 @@ const StoreNavBar = () => {
     pages.forEach((page) => {
       const pageRef = doc(db,"pages",page.id)
       updateDoc(pageRef,{
-        data:JSON.stringify(page.data)
+        data:page.data
       }).then(()=>{
         setTimeout(()=>{
           setPublishing(false)

@@ -14,7 +14,7 @@ const NewPage = () => {
         addDoc(pagesRef,{
           name:page,
           url,
-          data:"[]",
+          data:[],
           store,
           links:[...pages[0].links,{name:page,url,show:true}]
         }).then(()=>{

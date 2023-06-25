@@ -45,15 +45,26 @@ export default function Orders() {
                     <td>{order.number}</td>
                     <td>{order.address}</td>
                     <td>
-                      <div className="avatar-group -space-x-6 py-1">
+                      <div className="avatar-group -space-x-4 py-1">
                         {
-                          order.cart.map((o:any)=>(
-                        <div className="avatar border-[3px] shadow-md border-white">
+                          order.cart.slice(0,5).map((o:any)=>(
+                            <div className="relative">
+                        <span className="badge z-10 badge-sm absolute top-0 left-0 bg-primary text-white indicator-item">{o.quantity}</span>
+                        <div className="avatar border-[3px] relative shadow-md border-white">
                           <div className="w-12">
                                     <img className="object-contain bg-white" src={o.product.img} />
                           </div>
                         </div>
+                            </div>
                           ))
+                        }
+                        {
+                            order.cart.length>5 &&
+                            <div className="avatar placeholder">
+                              <div className="w-12 bg-neutral-focus text-neutral-content">
+                                <span>+{order.cart.length-5}</span>
+                              </div>
+                            </div>
                         }
                       </div>
                     </td>

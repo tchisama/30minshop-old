@@ -41,7 +41,7 @@ const StoreGeneratorLive = ({editable,page,storeName}:props) => {
       onSnapshot(q,(snapshot)=>{
         let pags =[]
         snapshot.docs.forEach((doc)=>{
-          pags.push({...doc.data(),id:doc.id,data:JSON.parse((doc.data().data))})
+          pags.push({...doc.data(),id:doc.id})
         })
         if(pags.length>0){
           setPages(pags)
