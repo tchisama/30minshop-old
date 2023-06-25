@@ -9,7 +9,7 @@ import { useCart } from '@/store/useCart';
 
 const NavBar = ({conf,storeName}:any) => {
   const {pages,currentPage}=usePages()
-  const {store}=useUser()
+  const {user:{store}}=useUser()
   const {cart}=useCart()
 
   return (

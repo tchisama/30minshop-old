@@ -8,7 +8,7 @@ const NewPage = () => {
     const [page,setPage]=useState("");
     const [url,setUrl]=useState("");
     const {setPages,pages,setCurrentPage}=usePages()
-    const {store}=useUser()
+    const {user:{store}}=useUser()
 
     const addPage=()=>{
         addDoc(pagesRef,{

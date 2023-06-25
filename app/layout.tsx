@@ -1,6 +1,8 @@
+"use client"
 import { Menu } from '@/components/Menu'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { useUser } from '@/store/useUser'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={""}>
+
         {children}
+        
       </body>
     </html>
   )

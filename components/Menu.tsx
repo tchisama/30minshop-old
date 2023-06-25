@@ -12,7 +12,10 @@ import { Collapse } from "@mui/material";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Link from "next/link";
-
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import { useUser } from "@/store/useUser";
+import { signOut } from "firebase/auth";
+import { auth } from "@/firebase";
 
 
 
@@ -27,17 +30,31 @@ const MenuArray = [
 
 export const Menu = () => {
   const [menu, setMenu] = useState(false);
+  const {setUser} = useUser()
+  const signout = ()=>{
+    localStorage.setItem("user",'{"store":""}')
+    setUser({store:""})
+    signOut(auth)
+  }
   return (
     <div className="py-4 m-2 rounded-xl shadow-xl px-1 flex flex-col gap-16 w-fit bg-primary text-white sticky top-8 h-full  ">
       <Image className="mx-4 w-12 h-12 bg-white p-2 mask mask-squircle" src={logo} alt="30 min shop logo"  onClick={()=>setMenu(p=>!p)}/>
       <ul className="menu font-medium text-md rounded-box gap-0 ">
         {
-            MenuArray.map(link=><li><a className="hover:text-white py-4  w-full pr-2 pl-5" href={link.link}>{link.icon}{
+            MenuArray.map(link=><li><Link className="hover:text-white py-4  w-full pr-2 pl-5" href={link.link}>{link.icon}{
               <Collapse orientation="horizontal" in={menu} >
                 {link.name}
               </Collapse>
-            }</a></li>)
+            }</Link></li>)
           }
+          <li>
+            <Link onClick={signout} href={"/signin"} className="hover:text-white py-4 mt-8 w-full pr-2 pl-5 ">
+              <LogoutRoundedIcon/>
+              <Collapse orientation="horizontal" in={menu} >
+                Logout
+              </Collapse>
+            </Link>
+          </li>
       </ul>
     </div>
   );

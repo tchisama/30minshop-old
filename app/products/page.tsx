@@ -2,14 +2,18 @@
 "use client"
 import { Menu } from "@/components/Menu";
 import {useEffect, useState} from "react"
-import { getDocs} from "firebase/firestore"
+import { getDocs, query, where} from "firebase/firestore"
 import {productsRef} from "@/firebase"
 import NewProduct from "@/components/NewProduct";
+import { useUser } from "@/store/useUser";
+import Security from "@/components/Security";
 
 export default function Orders() {
+  const {user:{store}}=useUser()
   const [products,setProducts]=useState([])
   useEffect(() => {
-    getDocs(productsRef)
+    const q = query(productsRef,where("store","==",store))
+    getDocs(q)
     .then((snapshot)=>{
       let prds:any=[];
       snapshot.docs.forEach(doc => {
@@ -21,6 +25,8 @@ export default function Orders() {
   }, [])
   
   return (
+    <Security>
+
     <div className="min-h-screen w-full flex relative">
       <Menu />
       <div className="flex-1 p-6">
@@ -59,5 +65,6 @@ export default function Orders() {
 
       </div>
     </div>
+    </Security>
   );
 }

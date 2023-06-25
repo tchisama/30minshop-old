@@ -1,7 +1,8 @@
 import Card from "./Components/Card";
 import {useEffect, useState} from "react"
-import { getDocs} from "firebase/firestore"
+import { getDocs, query, where} from "firebase/firestore"
 import {productsRef} from "@/firebase"
+import { useUser } from "@/store/useUser";
 
 
 type productType ={
@@ -15,8 +16,9 @@ type productType ={
 
 const ProductsViewer = ({ conf }: any) => {
   const [products,setProducts]=useState([])
+  const {user:{store}}=useUser()
   useEffect(() => {
-    getDocs(productsRef)
+    getDocs(query(productsRef,where("store","==",store)))
     .then((snapshot)=>{
       let prds:any=[];
       snapshot.docs.forEach(doc => {

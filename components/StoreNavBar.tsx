@@ -14,7 +14,7 @@ import { useUser } from "@/store/useUser";
 const StoreNavBar = () => {
   const {data,setData}=useData()
   const {currentPage,pages,setPages,setCurrentPage}=usePages()
-  const {store}=useUser()
+  const {user:{store}}=useUser()
   const [publishing,setPublishing]=useState(false)
   useEffect(() => {
       setData(pages[currentPage].data)

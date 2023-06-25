@@ -1,12 +1,13 @@
 "use client"
 import { Menu } from "@/components/Menu";
+import Security from "@/components/Security";
 import { orderRef } from "@/firebase";
 import { useUser } from "@/store/useUser";
 import { onSnapshot, query, where } from "firebase/firestore";
 import {useState,useEffect} from "react"
 export default function Orders() {
   const [orders,setOrders]=useState([])
-  const { store }= useUser()
+  const { user:{store} }= useUser()
   useEffect(() => {
     const q = query(orderRef,where("store","==",store))
     const getData = onSnapshot(q,snapshot=>{
@@ -22,6 +23,8 @@ export default function Orders() {
   }, [])
   
   return (
+    <Security>
+
     <div className="min-h-screen w-full flex relative">
       <Menu />
       <div className="flex-1 p-6">
@@ -76,6 +79,8 @@ export default function Orders() {
       </div>
 
       </div>
-    </div>
+      </div>
+    </Security>
+
   );
 }

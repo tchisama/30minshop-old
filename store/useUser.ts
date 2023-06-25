@@ -3,15 +3,15 @@ import { create } from "zustand";
 
 
 type User={
-    name:string
-    store:string
-    number:string
-    id:any
+    user:any
+    setUser:(newUser:any)=>void
+    setStore:(newStore:string)=>void
 }
 
 export const useUser = create<User>()((set)=>({
-    name:"abdessamad",
-    store:"nike",
-    number:"",
-    id:"0"
+    user:{
+        store:""
+    },
+    setUser:(newUser:any)=>set(state=>({user:newUser})),
+    setStore:(newStore:string)=>set(state=>({user:{...state.user,store:newStore}}))
 }))

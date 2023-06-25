@@ -1,4 +1,5 @@
 import { productsRef } from '@/firebase';
+import { useUser } from '@/store/useUser';
 import { addDoc } from 'firebase/firestore';
 import React, { useState } from 'react'
 
@@ -7,11 +8,13 @@ const NewProduct = () => {
     const [image,setImage]=useState("");
     const [price,setPrice]=useState(0);
     const [description,setDescription]=useState("");
+    const {user:{store}}=useUser()
 
     const addNewProduct =()=>{ addDoc(productsRef,{
         title,
         image,
         price,
+        store,
         description,
         avalibale:true,
     })

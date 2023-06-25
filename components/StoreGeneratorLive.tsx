@@ -13,6 +13,7 @@ import { usePages } from '@/store/usePages';
 import { pagesRef } from '@/firebase';
 import { and, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import Cart from '@/StoreSections/Cart';
+import { useUser } from '@/store/useUser';
 
 
 type props = {
@@ -24,6 +25,7 @@ const StoreGeneratorLive = ({editable,page,storeName}:props) => {
   const {data,setData,add} = useData()
   const {currentPage,setPages,setCurrentPage} = usePages()
   const [err,setErr]=useState(false)
+  const {setStore}=useUser();
 
   
   useEffect(()=>{
@@ -44,6 +46,7 @@ const StoreGeneratorLive = ({editable,page,storeName}:props) => {
           pags.push({...doc.data(),id:doc.id})
         })
         if(pags.length>0){
+          setStore(storeName||"")
           setPages(pags)
           setData(pags[0].data)
           console.log(pags)

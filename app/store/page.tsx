@@ -12,18 +12,19 @@ import { getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import { pagesRef } from '@/firebase';
 import { usePages } from '@/store/usePages';
 import { useUser } from '@/store/useUser';
+import Security from '@/components/Security';
 
 
 
 const Page = () => {
   const {selectedSection,setData}=useData()
   const {setPages,setCurrentPage}=usePages()
-  const {store}=useUser()
+  const {user:{store}}=useUser()
 
 
   useEffect(() => {
+    if(store){
     const q= query(pagesRef,where("store","==",store))
-
     onSnapshot(q,(snapshot)=>{
       let pgs:any=[];
       snapshot.docs.forEach(doc => {
@@ -34,10 +35,12 @@ const Page = () => {
       setData(pgs[0]?.data)
       setCurrentPage(0)
     })
-  }, [])
+    }
+  }, [store])
 
 
   return (
+    <Security>
       <div className='h-screen flex-1 relative  flex flex-col'>
             <StoreNavBar/>
         <div className='flex relative gap-4 flex-1 h-[calc(100vh-65px)] p-2 pt-4'>
@@ -48,6 +51,7 @@ const Page = () => {
             }
         </div>
       </div>
+    </Security>
   )
 }
 

@@ -6,7 +6,7 @@ import {useState} from 'react'
 
 const Cart = ({conf}:any) => {
     const {cart}=useCart()
-    const {store}=useUser()
+    const {user:{store}}=useUser()
     const [fullName,setFullName]=useState("")
     const [number,setNumber]=useState("")
     const [address,setAddress]=useState("")
