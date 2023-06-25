@@ -3,7 +3,7 @@
 
 
 export type section = {
-  type:"navbar"|"hero"|"productsViewer"|"footer",
+  type:"navbar"|"hero"|"productsViewer"|"footer"|"Cart",
   props:any
 }
 

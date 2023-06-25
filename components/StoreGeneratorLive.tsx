@@ -12,6 +12,7 @@ import Footer from '@/StoreSections/Footer';
 import { usePages } from '@/store/usePages';
 import { pagesRef } from '@/firebase';
 import { and, getDocs, onSnapshot, query, where } from 'firebase/firestore';
+import Cart from '@/StoreSections/Cart';
 
 
 type props = {
@@ -85,6 +86,16 @@ const StoreGeneratorLive = ({editable,page,storeName}:props) => {
             if(section.type==="footer"){
                 return(
                     <Footer key={key} conf={section.props}/>
+                )
+            }
+            if(section.type==="footer"){
+                return(
+                    <Footer key={key} conf={section.props}/>
+                )
+            }
+            if(section.type==="cart"){
+                return(
+                    <Cart key={key} conf={section.props}/>
                 )
             }
 

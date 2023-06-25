@@ -51,9 +51,9 @@ const StoreNavBar = () => {
   return (
     <div className=" shadow-lg top-0 w-full left-0">
       <div className="bg-white py-4 flex justify-between px-6 gap-8 border-b">
-        <Link href={"/"}>
+        <a href={"/"}>
           <Image className="w-8 h-8" src={logo} alt="30 min shop logo"></Image>
-        </Link>
+        </a>
         <div className="px-1  flex items-center gap-2">
           <div className="join join-horizontal">
           <select onChange={e=>setCurrentPage((e.target as any).value)} value={currentPage} className="select join-item select-sm select-bordered w-full max-w-xs">
@@ -68,9 +68,9 @@ const StoreNavBar = () => {
           </button>
           {
             data.length>0&&
-            <Link href={"live/"+store+"/"+pages[currentPage].url} className="btn btn-sm btn-primary">
+            <a href={"live/"+store+"/"+pages[currentPage].url} className="btn btn-sm btn-primary">
               Live
-            </Link>
+            </a>
           }
         </div>
       </div>

@@ -3,10 +3,14 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import Link from 'next/link';
 import { usePages } from '@/store/usePages';
+import { useUser } from '@/store/useUser';
+import { useCart } from '@/store/useCart';
 
 
 const NavBar = ({conf,storeName}:any) => {
   const {pages,currentPage}=usePages()
+  const {store}=useUser()
+  const {cart}=useCart()
 
   return (
     <div style={{backgroundColor:conf?.backgroundColor,color:conf?.textColor}} className='flex justify-between items-center   py-6  p-2 px-10 w-full '>
@@ -45,10 +49,10 @@ const NavBar = ({conf,storeName}:any) => {
             </button>
           }
           {conf.viewCart && 
-            <button className=' btn btn-circle relative hover:btn-primary gap-2 rounded-xl hover:bg-gray-100'>
-              <span className="badge badge-primary absolute badge-sm top-0 -right-1 indicator-item">8</span>
+            <Link href={'/live/'+store+'/cart'} className=' btn btn-circle relative hover:btn-primary gap-2 rounded-xl hover:bg-gray-100'>
+              <span className="badge badge-primary absolute badge-sm top-0 -right-1 indicator-item">{cart?.length}</span>
               <ShoppingBasketIcon/>
-            </button>
+            </Link>
           }
       </div>
       }

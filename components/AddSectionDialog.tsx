@@ -93,6 +93,15 @@ export default function AddSectionDialog({ index }: props) {
         index
       );
     }
+    if (sectionType === "cart") {
+      add(
+        {
+          type: "cart",
+          props:{}
+        },
+        index
+      );
+    }
     handleClose();
   };
 
@@ -136,6 +145,12 @@ export default function AddSectionDialog({ index }: props) {
             className="h-28 cursor-pointer hover:border-blue-400 border-[2px] duration-300 w-full bg-white shadow-lg rounded-md flex items-center justify-center text-lg"
           >
             footer
+          </div>
+          <div
+            onClick={() => addSection("cart", index)}
+            className="h-28 cursor-pointer hover:border-blue-400 border-[2px] duration-300 w-full bg-white shadow-lg rounded-md flex items-center justify-center text-lg"
+          >
+            cart
           </div>
         </div>
       </Dialog>

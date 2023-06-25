@@ -1,3 +1,4 @@
+import { useCart } from '@/store/useCart'
 import React from 'react'
 type props = {
   img:string
@@ -7,6 +8,7 @@ type props = {
   id:any
 }
 const Card = ({img,price,description,title,id}:props) => {
+  const {addToCart}=useCart()
   return (
           <div className="card  card-compact w-full bg-base-100 shadow-xl mx-auto">
             <figure>
@@ -23,7 +25,7 @@ const Card = ({img,price,description,title,id}:props) => {
               </div>
               <p className='text-gray-600 text-sm'>{description.slice(0,30)}{description.length>30 && " ..."}</p>
               <div className='pt-2'>
-                <button className="btn btn-sm float-right hover:btn-primary">Add to cart </button>
+                <button onClick={()=>addToCart({product:{img,price,title,id},quantity:1})} className="btn btn-sm float-right hover:btn-primary">Add to cart </button>
               </div>
             </div>
           </div>

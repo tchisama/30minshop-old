@@ -10,6 +10,7 @@ import AddSectionDialog from './AddSectionDialog';
 import ProductsViewer from '@/StoreSections/ProductsViewer';
 import Footer from '@/StoreSections/Footer';
 import { usePages } from '@/store/usePages';
+import Cart from '@/StoreSections/Cart';
 
 
 type props = {
@@ -83,6 +84,20 @@ const StoreGenerator = ({editable}:props) => {
               } else {
                 return(
                     <Footer conf={section.props}/>
+                )
+              }
+            }
+
+            if(section.type==="cart"){
+              if (editable) {
+                return(
+                  <SectionContainer key={key} k={key} >
+                    <Cart conf={section.props}/>
+                  </SectionContainer>
+                )
+              } else {
+                return(
+                    <Cart conf={section.props}/>
                 )
               }
             }
