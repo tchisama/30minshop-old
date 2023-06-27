@@ -35,7 +35,7 @@ const NewPage = () => {
   return (
     <div>
     {/* Open the modal using ID.showModal() method */}
-    <button className="btn hover:btn-primary btn-sm join-item" onClick={()=>window.my_modal_2.showModal()}>new</button>
+    <button className="btn hover:btn-primary btn-sm join-item" onClick={()=>(window as any ).my_modal_2.showModal()}>new</button>
     <dialog id="my_modal_2" className="modal">
     <form method="dialog" className="modal-box">
         <h3 className="font-bold text-lg">Create a new page!</h3>

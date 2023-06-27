@@ -23,7 +23,7 @@ const NewProduct = () => {
   return (
     <div>
     {/* Open the modal using ID.showModal() method */}
-    <button className="btn btn-primary" onClick={()=>window.my_modal_1.showModal()}>open modal</button>
+    <button className="btn btn-primary" onClick={()=>(window as any).my_modal_1.showModal()}>open modal</button>
     <dialog id="my_modal_1" className="modal">
     <form method="dialog" className="modal-box">
         <h3 className="font-bold text-lg">Create a new product!</h3>
