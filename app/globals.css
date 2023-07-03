@@ -31,6 +31,9 @@
 .cont:hover .add-section{
   @apply scale-100
 }
+p,h1,h2,h3,h4,h5,h6,button,label,select,input,option,li,ul,div{
+  color:#333
+}
 
 *{
   scroll-behavior: smooth;

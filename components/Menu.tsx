@@ -41,7 +41,7 @@ export const Menu = () => {
       <Image className="mx-4 w-12 h-12 bg-white p-2 mask mask-squircle" src={logo} alt="30 min shop logo"  onClick={()=>setMenu(p=>!p)}/>
       <ul className="menu font-medium text-md rounded-box gap-0 ">
         {
-            MenuArray.map(link=><li><Link className="hover:text-white py-4  w-full pr-2 pl-5" href={link.link}>{link.icon}{
+            MenuArray.map(link=><li><Link className="hover:text-white text-gray-200 py-4  w-full pr-2 pl-5" href={link.link}>{link.icon}{
               <Collapse orientation="horizontal" in={menu} >
                 {link.name}
               </Collapse>
