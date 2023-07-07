@@ -41,7 +41,7 @@ const StoreGeneratorLive = ({editable,page,storeName}:props) => {
 
       const q = query(pagesRef,and(where("url","==",page),where("store","==",storeName)))
       onSnapshot(q,(snapshot)=>{
-        let pags =[]
+        let pags:any[]=[]
         snapshot.docs.forEach((doc)=>{
           pags.push({...doc.data(),id:doc.id})
         })
@@ -91,12 +91,7 @@ const StoreGeneratorLive = ({editable,page,storeName}:props) => {
                     <Footer key={key} conf={section.props}/>
                 )
             }
-            if(section.type==="footer"){
-                return(
-                    <Footer key={key} conf={section.props}/>
-                )
-            }
-            if(section.type==="cart"){
+            if(section.type==="Cart"){
                 return(
                     <Cart key={key} conf={section.props}/>
                 )

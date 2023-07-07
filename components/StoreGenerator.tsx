@@ -31,7 +31,7 @@ const StoreGenerator = ({editable}:props) => {
           </div>
         }
         {
-          data.map((section,key)=>{
+          data.map((section:any,key)=>{
 
             if(section.type==="navbar"){
               if (editable) {
@@ -88,7 +88,7 @@ const StoreGenerator = ({editable}:props) => {
               }
             }
 
-            if(section.type==="cart"){
+            if(section.type==="Cart"){
               if (editable) {
                 return(
                   <SectionContainer key={key} k={key} >
