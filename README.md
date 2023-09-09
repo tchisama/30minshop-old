@@ -1,4 +1,4 @@
-# Node 30MinShop
+# 30MinShop
 ![Frame 4 (2)](https://github.com/tchisama/30minshop-old/assets/115560200/e0d466ce-5c03-4b36-b7ab-cc12b040df15)
 
 ## Overview
